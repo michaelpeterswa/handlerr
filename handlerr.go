@@ -11,6 +11,8 @@ type Handlerr struct {
 }
 
 func (h Handlerr) Err(s string, e error) {
-	eStr := fmt.Sprintf("hdlr :: %s", s)
-	h.Logger.Error(eStr, zap.Error(e))
+	if e != nil {
+		eStr := fmt.Sprintf("hdlr :: %s", s)
+		h.Logger.Error(eStr, zap.Error(e))
+	}
 }
